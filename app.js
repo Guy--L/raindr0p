@@ -48,7 +48,7 @@ app.post('/upload', function (req, res) {
                 console.log(er2);
                 return res.status(500).json({ success: false, data: er2 });
             }
-            client.query('insert into raindrop (filename, sourceid, stamp) values ($1, $2, current_timestamp)',
+            client.query("insert into raindrop (filename, sourceid, stamp) values ($1, $2, timezone('UTC', now()))",
                 [sampleFile.name, req.body.sourceid],
                 function (er3, result) {
                     if (er3) {

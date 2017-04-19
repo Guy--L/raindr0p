@@ -4,7 +4,7 @@ block content
   h1= title
   p Welcome to #{title}
 
-  form#uploadForm.form-horizontal(ref='uploadForm', action='http://localhost:3000/upload', method='post', encType="multipart/form-data")
+  form#uploadForm.form-horizontal(ref='uploadForm', action='http://localhost:5000/upload', method='post', encType="multipart/form-data")
     div.form-group
         label.col-sm-2.control-label(for='sourceid') Source Id:
         div.col-sm-4
