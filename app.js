@@ -42,7 +42,9 @@ app.post('/upload', function (req, res) {
     sampleFile.mv('uploads/'+sampleFile.name, function (err) {
         if (err)
             return res.status(500).send(err);
-        pg.connect(connectionString, (er2, client, done) => {
+        if (connectionString.indexOf('localhost')==-1)
+	    pg.defaults.ssl = true;
+	pg.connect(connectionString, (er2, client, done) => {
             if (er2) {
                 done();
                 console.log(er2);
@@ -53,9 +55,7 @@ app.post('/upload', function (req, res) {
                 function (er3, result) {
                     if (er3) {
                         console.log(er3);
-                    } else {
-                        console.log('row inserted with id: ' + result.rows[0].id);
-                    }
+                    } 
                 });
             done();
         });
