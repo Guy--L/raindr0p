@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  form(ref='uploadForm', id='uploadForm', action='http://localhost:3000/upload', method='post', encType="multipart/form-data")
+    div.form-group
+        label(for='sourceid') Source Id:
+        input#sourceid.form-control(type='text', name='sourceid')
+    div.form-group
+        label(for='sampleFile') File to Upload:
+        input#sampleFile.form-control(type='file', name='sampleFile')
+
+    button.btn.btn-primary(type='submit') Submit
+
