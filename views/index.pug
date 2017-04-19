@@ -4,13 +4,16 @@ block content
   h1= title
   p Welcome to #{title}
 
-  form(ref='uploadForm', id='uploadForm', action='http://localhost:3000/upload', method='post', encType="multipart/form-data")
+  form#uploadForm.form-horizontal(ref='uploadForm', action='http://localhost:3000/upload', method='post', encType="multipart/form-data")
     div.form-group
-        label(for='sourceid') Source Id:
-        input#sourceid.form-control(type='text', name='sourceid')
+        label.col-sm-2.control-label(for='sourceid') Source Id:
+        div.col-sm-4
+            input#sourceid.form-control(type='text', name='sourceid')
     div.form-group
-        label(for='sampleFile') File to Upload:
-        input#sampleFile.form-control(type='file', name='sampleFile')
-
-    button.btn.btn-primary(type='submit') Submit
+        label.col-sm-2.control-label(for='sampleFile') File to Upload:
+        div.col-sm-4
+            input#sampleFile.form-control(type='file', name='sampleFile')
+    div.form-group
+        div.col-sm-offset-2.col-sm-4
+            button.btn.btn-primary(type='submit') Submit
 

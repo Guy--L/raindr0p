@@ -36,6 +36,9 @@ app.post('/upload', function (req, res) {
         return res.status(400).send('No files were uploaded.');
 
     let sampleFile = req.files.sampleFile;
+    if (sampleFile == null)
+        return res.status(400).send('No files were uploaded.');
+
     sampleFile.mv('uploads/'+sampleFile.name, function (err) {
         if (err)
             return res.status(500).send(err);
